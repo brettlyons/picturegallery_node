@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div.container
+    div.header.clearfix
+      nav
+        ul.nav.nav-pills.pull-left
+            li
+              a(href= "/pictures" role="presentation" class="active").btn.btn-primary Pictures
+            li
+              a(href= "/upload" role="presentation") Upload!
+      h3.pull-right #{title}

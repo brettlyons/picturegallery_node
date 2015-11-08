@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div.container
+    div.header.clearfix
+      nav
+        ul.nav.nav-pills.pull-left
+            li
+              a(href= "/pictures" role="presentation" class="active").btn.btn-primary Gallery
+            li
+              a(href= "/upload" role="presentation") Upload!
+      h3.pull-right Pictures
+  div.container
+    div.row
+      div.jumbotron.h3 Gallery of pictures
+        div.h4 Click the image for a larger view.
+    div.row
+      for pic in pictures
+          div.col-md-4.panel.panel-info
+            div.panel-heading
+              div.panel-title.h1= pic.title1
+                a(href='/pictures/' + pic._id).thumbnail
+                  img(src=pic.filepath class="center-block" alt="A picture" width='60%' style="image-orientation:auto")
+            div.panel-body= pic.title2

@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  div.container
+    div.header.clearfix
+      nav
+        ul.nav.nav-pills.pull-left
+            li
+              a(href= "/pictures" role="presentation" class="active").btn.btn-primary Gallery
+            li
+              a(href= "/upload" role="presentation") Upload!
+      h3.pull-right #{picture.title1}
+  div.container
+    div.row
+      div.col-lg-12.panel.thumbnail
+        img(src=picture.filepath class="center-block" width="100%" alt="A picture" style="image-orientation:auto")
+        div.caption
+          div.row
+            if tags
+              for tag in tags
+                a(href='/pictures/' + picture._id + '/removetag/' + tag._id).col-xs-2.h4= tag.tag
+          div.col-md-12
+            if errors
+              div.alert.alert-danger= errors
+            div.col-md-12.p (Click on tag to remove it.)
+            form(action="/pictures/" + picture._id + "/addtag", method="post")
+              div
+              input(type="text", name="newTag" placeholder="New tag. . .")
+              div
+              input(type="submit" value="Add Tag").btn.btn-primary
+    for comment in commentsArray
+      div.row
+        div.col-md-12.panel.panel-info.pull-left
+          div.panel-heading
+            div.panel-title= comment.authorId
+          div.panel-body= comment.comment
+            form(action="/pictures/" + picture._id + "/delcomment/" + comment._id, method="post")
+              input(type="submit" value="Remove this comment").btn.btn-danger
+    div.row
+      div.col-md-12
+        form(action="/pictures/" + picture._id + "/comment", method="post")
+          div.p Author
+          input(type="text", name="author")
+          div.p Comment
+          textarea(cols=40, rows=4 name="comment")
+          p
+          input(type="submit" value="Comment")

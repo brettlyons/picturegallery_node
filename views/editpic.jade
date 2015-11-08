@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div.container
+    div.header.clearfix
+      nav
+        ul.nav.nav-pills.pull-left
+            li
+              a(href= "/pictures" role="presentation" class="active").btn.btn-primary Gallery
+            li
+      h3.pull-right Preview and more info
+  div.container
+    div.row
+      div.col-md-12
+        img(src=picData.filepath class="center-block" width="100%" alt="A picture")
+    div.row
+      div.col-lg-12
+        form(action="/editpic/" + picData._id, method="post")
+          p Title 1
+          input(type="text", name="title")
+          p Title 2 Or Subheading
+          input(type="submit", value="Post The Picture")

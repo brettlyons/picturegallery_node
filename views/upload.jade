@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div.container
+    div.header.clearfix
+      nav
+        ul.nav.nav-pills.pull-left
+            li
+              a(href= "/pictures" role="presentation" class="active").btn.btn-primary Gallery
+            li
+              a(href= "/upload" role="presentation") Upload!
+      div.h3.pull-right Add a picture!
+  div.container
+    div.row
+      div.col-lg-12
+        form(action="/upload", method="post", enctype="multipart/form-data")
+          input(type="file", name="pictureFile", accept="image")
+          input(type="submit" value="Upload")
