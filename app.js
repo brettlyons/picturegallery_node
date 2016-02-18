@@ -1,4 +1,4 @@
-require('dotenv').load();
+// require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -23,14 +23,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(session({
-  name: 'session',
-  keys: [
-    process.env.KEY_1,
-    process.env.KEY_2,
-    process.env.KEY_3
-  ]
-}));
+// app.use(session({
+//   name: 'session',
+//   keys: [
+//     process.env.KEY_1,
+//     process.env.KEY_2,
+//     process.env.KEY_3
+//   ]
+// }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(busboy());
 
